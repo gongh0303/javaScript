@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .box{
+            width: 400px;
+            height: 400px;
+            margin:100px auto;
+            overflow: hidden;
+            text-align: center;
+        }
+        input{
+            height: 30px;
+            width: 50px;
+        }
+        #box1{
+            height: 100px;
+            width: 100px;
+            margin: 50px auto;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <input type="button" value="变宽">
+        <input type="button" value="变高">
+        <input type="button" value="变色">
+        <input type="button" value="隐藏">
+        <input type="button" value="重置">  
+        <div id="box1"></div>
+    </div>
+    <script src="../js/basic.js"></script>
+    <script type="text/javascript">
+        var oInp = document.getElementsByTagName("input");
+        var oDiv = document.getElementById("box");
+        var oDiv1 = document.getElementById("box1");
+        
+        // oInp[0].onclick = function(){
+        //     oDiv.style.cssText = "";
+        // }
+        // oInp[0].onclick = function(){
+        //     changeStyle(oDiv1,"width","200px");
+        // }
+
+        var attr = ["width","height","background","display","display"];
+        var value = ["200px","200px","red","none","block"];
+
+        for(var i = 0;i<oInp.length;i++){
+            oInp[i].index = i;
+            oInp[i].onclick = function(){
+                // if(this.index==oInp.length-1){
+                //     oDiv1.style.cssText = "";
+                // }
+                this.index === oInp.length-1 && (oDiv1.style.cssText = "");
+                changeStyle(oDiv1,attr[this.index],value[this.index]);
+            }
+        }
+        
+    </script>
+</body>
+</html>
